@@ -1,0 +1,277 @@
+{
+  "type": "NavigationSplitView",
+  "id": 100,
+  "properties": {
+    "columnVisibility": "all",
+    "style": "balanced",
+    "frame": {
+      "minWidth": 800,
+      "minHeight": 480
+    },
+    "padding": {
+      "top": 16,
+      "leading": 16,
+      "bottom": 16,
+      "trailing": 16
+    }
+  },
+  "sidebar": {
+    "type": "VStack",
+    "properties": {
+      "spacing": 8,
+      "navigationSplitViewColumnWidth": {
+        "min": 220,
+        "ideal": 320,
+        "max": 360
+      }
+    },
+    "children": [
+      {
+        "type": "Table",
+        "id": 10,
+        "properties": {
+          "columns": ["Filename"],
+          "widths": [280],
+          "itemType": {
+            "viewType": "Text"
+          },
+          "valueChangeActionID": "textutil.files.selection.changed",
+          "doubleClickActionID": "textutil.files.double.click",
+        }
+      },
+      {
+        "type": "HStack",
+        "properties": {
+          "spacing": 0
+        },
+        "children": [
+          {
+            "type": "Button",
+            "id": 101,
+            "properties": {
+              "systemImage": "plus.circle",
+              "imageScale": "large",
+              "buttonStyle": "plain",
+              "actionID": "textutil.add.files",
+              "frame": {
+                "width": 32,
+                "height": 32
+              }
+            }
+          },
+          {
+            "type": "Button",
+            "id": 102,
+            "properties": {
+              "systemImage": "minus.circle",
+              "imageScale": "large",
+              "buttonStyle": "plain",
+              "actionID": "textutil.remove.selected",
+              "disabled": true,
+              "frame": {
+                "width": 32,
+                "height": 32
+              }
+            }
+          },
+          {
+            "type": "Divider",
+            "properties": {
+              "padding": {
+                "top": 0,
+                "leading": 8,
+                "bottom": 0,
+                "trailing": 8
+              },
+              "frame": {
+                "height": 16
+              }
+            }
+          },
+          {
+            "type": "Button",
+            "id": 105,
+            "properties": {
+              "systemImage": "eye",
+              "imageScale": "medium",
+              "buttonStyle": "plain",
+              "actionID": "textutil.quicklook",
+              "disabled": true,
+              "frame": {
+                "width": 32,
+                "height": 32
+              }
+            }
+          },
+          {
+            "type": "Button",
+            "id": 104,
+            "properties": {
+              "systemImage": "finder",
+              "imageScale": "medium",
+              "buttonStyle": "plain",
+              "actionID": "textutil.reveal.in.finder",
+              "disabled": true,
+              "frame": {
+                "width": 32,
+                "height": 32
+              }
+            }
+          },
+          {
+            "type": "Spacer"
+          },
+          {
+            "type": "Button",
+            "id": 103,
+            "properties": {
+              "systemImage": "trash.circle",
+              "imageScale": "large",
+              "buttonStyle": "plain",
+              "actionID": "textutil.clear.all",
+              "frame": {
+                "width": 32,
+                "height": 32
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "detail": {
+    "type": "VStack",
+    "properties": {
+      "frame": {
+        "minWidth": 420,
+        "idealWidth": 460
+      },
+      "spacing": 16
+    },
+    "children": [
+      {
+        "type": "GroupBox",
+        "properties": {
+          "title": "Info",
+          "frame": {
+            "minWidth": 400
+          }
+        },
+        "children": [
+          {
+            "type": "ScrollView",
+            "properties": {
+              "frame": {
+                "minWidth": 390,
+                "idealWidth": 390,
+                "maxWidth": 390,
+                "minHeight": 200
+              }
+            },
+            "content": {
+              "type": "Text",
+              "id": 12,
+              "properties": {
+                "text": "",
+                "frame": {
+                "minWidth": 380,
+                },
+                "foregroundStyle": "secondary",
+              }
+            }
+          }
+        ]
+      },
+      {
+        "type": "GroupBox",
+        "properties": {
+          "title": "Conversion Options",
+          "frame": {
+            "minWidth": 400,
+          }
+        },
+        "children": [
+          {
+            "type": "VStack",
+            "properties": {
+              "spacing": 14,
+              "alignment": "leading",
+              "padding": {
+                "top": 12,
+                "leading": 12,
+                "bottom": 20,
+                "trailing": 12
+              },
+              "frame": {
+                "minWidth": 390,
+                "idealWidth": 390,
+                "maxWidth": 390
+              }
+            },
+            "children": [
+              {
+                "type": "Picker",
+                "id": 13,
+                "properties": {
+                  "title": "Output Format",
+                  "options": [
+                    {"title": "Plain Text - txt", "tag": "txt"},
+                    {"title": "Rich Text Format - rtf", "tag": "rtf"},
+                    {"title": "Rich Text With Images - rtfd", "tag": "rtfd"},
+                    {"title": "Microsoft Word - docx", "tag": "docx"},
+                    {"title": "Microsoft Word Legacy - doc", "tag": "doc"},
+                    {"title": "Microsoft Word XML - wordml", "tag": "wordml"},
+                    {"title": "OpenDocument Text - odt", "tag": "odt"},
+                    {"title": "Web Page - html", "tag": "html"},
+                    {"title": "Safari Web Archive - webarchive", "tag": "webarchive"}
+                  ],
+                  "actionID": "textutil.format.changed"
+                }
+              },
+              {
+                "type": "Toggle",
+                "id": 14,
+                "properties": {
+                  "title": "Overwrite existing files"
+                }
+              },
+              {
+                "type": "Toggle",
+                "id": 15,
+                "properties": {
+                  "title": "Don't copy metadata (author, subject, etc.)"
+                }
+              }
+            ]
+          }
+        ]
+          },
+      {
+        "type": "Spacer",
+      },
+      {
+    "type": "HStack",
+    "properties": {
+      "spacing": 16
+    },
+    "children": [
+      {
+        "type": "Spacer"
+      },
+      {
+        "type": "Button",
+        "properties": {
+          "title": "Batch Convert",
+            "padding": {
+              "bottom": 8,
+              "trailing": 8
+            },
+          "buttonStyle": "borderedProminent",
+          "actionID": "textutil.start.batch"
+        }
+      }
+    ]
+  }
+    ]
+  }
+}
