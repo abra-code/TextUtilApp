@@ -30,12 +30,9 @@
         "type": "Table",
         "id": 10,
         "properties": {
-          "columns": ["Filename"],
+          "columns": ["Document"],
           "widths": [280],
-          "itemType": {
-            "viewType": "Text"
-          },
-          "valueChangeActionID": "textutil.files.selection.changed",
+          "actionID": "textutil.files.selection.changed",
           "doubleClickActionID": "textutil.files.double.click",
         }
       },
