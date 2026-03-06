@@ -6,13 +6,10 @@
     "style": "balanced",
     "frame": {
       "minWidth": 800,
-      "minHeight": 480
+      "minHeight": 540
     },
     "padding": {
-      "top": 16,
-      "leading": 16,
-      "bottom": 16,
-      "trailing": 16
+      "top": 4,
     }
   },
   "sidebar": {
@@ -143,7 +140,8 @@
         "minWidth": 420,
         "idealWidth": 460
       },
-      "spacing": 16
+      "spacing": 16,
+      "padding": "default"
     },
     "children": [
       {
@@ -160,8 +158,6 @@
             "properties": {
               "frame": {
                 "minWidth": 390,
-                "idealWidth": 390,
-                "maxWidth": 390,
                 "minHeight": 200
               }
             },
@@ -176,7 +172,8 @@
                 "foregroundStyle": "secondary",
               }
             }
-          }
+          },
+          { "type": "Divider", "properties": { "opacity": 0, "frame": { "height": 0 } } }
         ]
       },
       {
@@ -193,16 +190,10 @@
             "properties": {
               "spacing": 14,
               "alignment": "leading",
-              "padding": {
-                "top": 12,
-                "leading": 12,
-                "bottom": 20,
-                "trailing": 12
-              },
+              "padding": "default",
               "frame": {
                 "minWidth": 390,
-                "idealWidth": 390,
-                "maxWidth": 390
+                "idealWidth": 390
               }
             },
             "children": [
@@ -238,37 +229,34 @@
                 "properties": {
                   "title": "Don't copy metadata (author, subject, etc.)"
                 }
-              }
+              },
+              { "type": "Divider", "properties": { "opacity": 0, "frame": { "height": 0 } } }
             ]
           }
         ]
-          },
+      },
       {
         "type": "Spacer",
       },
       {
-    "type": "HStack",
-    "properties": {
-      "spacing": 16
-    },
-    "children": [
-      {
-        "type": "Spacer"
-      },
-      {
-        "type": "Button",
+        "type": "HStack",
         "properties": {
-          "title": "Batch Convert",
-            "padding": {
-              "bottom": 8,
-              "trailing": 8
-            },
-          "buttonStyle": "borderedProminent",
-          "actionID": "textutil.start.batch"
-        }
-      }
-    ]
-  }
+          "spacing": 16
+        },
+        "children": [
+         {
+          "type": "Spacer"
+         },
+         {
+           "type": "Button",
+           "properties": {
+             "title": "Batch Convert",
+             "buttonStyle": "borderedProminent",
+             "actionID": "textutil.start.batch"
+           }
+         }
+       ]
+     }
     ]
   }
 }
