@@ -250,7 +250,7 @@
          {
            "type": "Button",
            "properties": {
-             "title": "Batch Convert",
+             "title": "Convert",
              "buttonStyle": "borderedProminent",
              "actionID": "textutil.start.batch"
            }
