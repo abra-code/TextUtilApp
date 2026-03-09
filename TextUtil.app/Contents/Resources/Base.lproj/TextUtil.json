@@ -258,7 +258,7 @@
       {
         "type": "Button",
         "properties": {
-          "title": "Batch Convert",
+          "title": "Convert",
             "padding": {
               "bottom": 8,
               "trailing": 8
