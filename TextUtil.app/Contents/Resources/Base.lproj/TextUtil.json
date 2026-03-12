@@ -218,13 +218,6 @@
               },
               {
                 "type": "Toggle",
-                "id": 14,
-                "properties": {
-                  "title": "Overwrite existing files"
-                }
-              },
-              {
-                "type": "Toggle",
                 "id": 15,
                 "properties": {
                   "title": "Don't copy metadata (author, subject, etc.)"
@@ -244,6 +237,13 @@
           "spacing": 16
         },
         "children": [
+         {
+         	"type": "Toggle",
+            "id": 14,
+            "properties": {
+                "title": "Overwrite existing files"
+            }
+         },
          {
           "type": "Spacer"
          },
