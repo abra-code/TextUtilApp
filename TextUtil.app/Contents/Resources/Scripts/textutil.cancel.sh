@@ -3,4 +3,4 @@
 
 # This script runs when the ActionUI window is closed
 # Currently just echoes a cancellation message
-echo "TextUtil window closed"
+# echo "TextUtil window closed"
