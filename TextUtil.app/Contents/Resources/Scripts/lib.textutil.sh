@@ -99,7 +99,7 @@ add_files_to_table() {
         printf "%s" "$buffer" | /usr/bin/sort -u | "$dialog_tool" "$window_uuid" ${TABLE_ID} omc_table_set_rows_from_stdin
     else
         _lib_log "buffer empty, clearing table"
-        printf '' | "$dialog_tool" "$window_uuid" ${TABLE_ID} omc_table_set_rows_from_stdin
+        "$dialog_tool" "$window_uuid" ${TABLE_ID} omc_table_remove_all_rows
     fi
     _lib_log "--- add_files_to_table done ---"
 }
