@@ -31,6 +31,8 @@
           "widths": [280],
           "actionID": "textutil.files.selection.changed",
           "doubleClickActionID": "textutil.files.double.click",
+          "onDropTypes": ["public.file-url", "public.folder"],
+          "onDropActionID": "textutil.files.drop",
         }
       },
       {
