@@ -9,7 +9,7 @@
       "minHeight": 540
     },
     "padding": {
-      "top": 4,
+      "top": 4
     }
   },
   "sidebar": {
@@ -32,7 +32,7 @@
           "actionID": "textutil.files.selection.changed",
           "doubleClickActionID": "textutil.files.double.click",
           "onDropTypes": ["public.file-url", "public.folder"],
-          "onDropActionID": "textutil.files.drop",
+          "onDropActionID": "textutil.files.drop"
         }
       },
       {
@@ -169,9 +169,9 @@
               "properties": {
                 "text": "",
                 "frame": {
-                "minWidth": 380,
+                "minWidth": 380
                 },
-                "foregroundStyle": "secondary",
+                "foregroundStyle": "secondary"
               }
             }
           },
@@ -183,7 +183,7 @@
         "properties": {
           "title": "Conversion Options",
           "frame": {
-            "minWidth": 400,
+            "minWidth": 400
           }
         },
         "children": [
@@ -231,7 +231,7 @@
         ]
       },
       {
-        "type": "Spacer",
+        "type": "Spacer"
       },
       {
         "type": "HStack",
