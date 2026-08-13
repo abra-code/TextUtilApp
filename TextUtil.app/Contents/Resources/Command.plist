@@ -181,6 +181,35 @@
 			<string>exe_script_file</string>
 		</dict>
 
+		<dict>
+			<key>NAME</key>
+			<string>TextUtil</string>
+			<key>COMMAND_ID</key>
+			<string>textutil.quicklook.window</string>
+			<key>EXECUTION_MODE</key>
+			<string>exe_shell_script</string>
+			<key>ACTIONUI_WINDOW</key>
+			<dict>
+				<key>JSON_NAME</key>
+				<string>TextUtilQuickLook</string>
+				<key>INIT_SUBCOMMAND_ID</key>
+				<string>textutil.quicklook.init</string>
+				<key>WINDOW_TITLE</key>
+				<string>Quick Look</string>
+				<key>IS_BLOCKING</key>
+				<false/>
+			</dict>
+		</dict>
+
+		<dict>
+			<key>NAME</key>
+			<string>TextUtil</string>
+			<key>COMMAND_ID</key>
+			<string>textutil.quicklook.init</string>
+			<key>EXECUTION_MODE</key>
+			<string>exe_script_file</string>
+		</dict>
+
 	</array>
 	<key>VERSION</key>
 	<integer>2</integer>
