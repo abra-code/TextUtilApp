@@ -1,0 +1,144 @@
+{
+  "COMMAND_LIST": [
+    {
+      "NAME": "TextUtil",
+      "ACTIVATION_MODE": "act_always",
+      "EXECUTION_MODE": "exe_script_file",
+      "NEXT_COMMAND_ID": "textutil.new",
+      "MULTIPLE_OBJECT_SETTINGS": {
+        "SEPARATOR": "\\n",
+        "PROCESSING_MODE": "proc_together",
+        "SORT_METHOD": "sort_by_name"
+      },
+      "REQUIRED_OMC_VERSION": "5.1",
+      "REQUIRED_MAC_OS_MIN_VERSION": "14.6"
+    },
+    {
+      "NAME": "TextUtil",
+      "COMMAND_ID": "textutil.new",
+      "EXECUTION_MODE": "exe_shell_script",
+      "ACTIONUI_WINDOW": {
+        "JSON_NAME": "TextUtil",
+        "INIT_SUBCOMMAND_ID": "textutil.init",
+        "END_CANCEL_SUBCOMMAND_ID": "textutil.cancel",
+        "IS_BLOCKING": false
+      }
+    },
+    {
+      "NAME": "TextUtil",
+      "COMMAND_ID": "textutil.open",
+      "EXECUTION_MODE": "exe_script_file",
+      "CHOOSE_OBJECT_DIALOG": {
+        "ALLOW_MULTIPLE_ITEMS": true,
+        "MESSAGE": "Select documents or folders",
+        "USE_PATH_CACHING": false
+      },
+      "MULTIPLE_OBJECT_SETTINGS": {
+        "SEPARATOR": "\\n",
+        "PROCESSING_MODE": "proc_together",
+        "SORT_METHOD": "sort_by_name"
+      }
+    },
+    {
+      "NAME": "TextUtil",
+      "COMMAND_ID": "textutil.init",
+      "EXECUTION_MODE": "exe_script_file",
+      "ENVIRONMENT_VARIABLES": {
+        "OMC_ACTIONUI_TABLE_10_COLUMN_2_ALL_ROWS": ""
+      }
+    },
+    {
+      "NAME": "TextUtil",
+      "COMMAND_ID": "textutil.files.selection.changed",
+      "EXECUTION_MODE": "exe_script_file"
+    },
+    {
+      "NAME": "TextUtil",
+      "COMMAND_ID": "textutil.add.files",
+      "EXECUTION_MODE": "exe_script_file",
+      "CHOOSE_OBJECT_DIALOG": {
+        "ALLOW_MULTIPLE_ITEMS": true,
+        "MESSAGE": "Select documents to convert",
+        "USE_PATH_CACHING": false
+      },
+      "ENVIRONMENT_VARIABLES": {
+        "OMC_ACTIONUI_TABLE_10_COLUMN_2_ALL_ROWS": ""
+      }
+    },
+    {
+      "NAME": "TextUtil",
+      "COMMAND_ID": "textutil.files.drop",
+      "EXECUTION_MODE": "exe_script_file",
+      "ENVIRONMENT_VARIABLES": {
+        "OMC_ACTIONUI_TABLE_10_COLUMN_2_ALL_ROWS": ""
+      }
+    },
+    {
+      "NAME": "TextUtil",
+      "COMMAND_ID": "textutil.remove.selected",
+      "EXECUTION_MODE": "exe_script_file",
+      "ENVIRONMENT_VARIABLES": {
+        "OMC_ACTIONUI_TABLE_10_COLUMN_2_ALL_ROWS": ""
+      }
+    },
+    {
+      "NAME": "TextUtil",
+      "COMMAND_ID": "textutil.clear.all",
+      "EXECUTION_MODE": "exe_script_file"
+    },
+    {
+      "NAME": "TextUtil",
+      "COMMAND_ID": "textutil.start.batch",
+      "EXECUTION_MODE": "exe_script_file",
+      "CHOOSE_FOLDER_DIALOG": {
+        "MESSAGE": "Select destination folder",
+        "BUTTON_PROMPT": "Convert"
+      },
+      "ENVIRONMENT_VARIABLES": {
+        "OMC_ACTIONUI_TABLE_10_COLUMN_2_ALL_ROWS": ""
+      }
+    },
+    {
+      "NAME": "TextUtil",
+      "COMMAND_ID": "textutil.cancel",
+      "EXECUTION_MODE": "exe_script_file"
+    },
+    {
+      "NAME": "TextUtil",
+      "COMMAND_ID": "textutil.files.double.click",
+      "EXECUTION_MODE": "exe_script_file"
+    },
+    {
+      "NAME": "TextUtil",
+      "COMMAND_ID": "textutil.format.changed",
+      "EXECUTION_MODE": "exe_script_file"
+    },
+    {
+      "NAME": "TextUtil",
+      "COMMAND_ID": "textutil.reveal.in.finder",
+      "EXECUTION_MODE": "exe_script_file"
+    },
+    {
+      "NAME": "TextUtil",
+      "COMMAND_ID": "textutil.quicklook",
+      "EXECUTION_MODE": "exe_script_file"
+    },
+    {
+      "NAME": "TextUtil",
+      "COMMAND_ID": "textutil.quicklook.window",
+      "EXECUTION_MODE": "exe_shell_script",
+      "ACTIONUI_WINDOW": {
+        "JSON_NAME": "TextUtilQuickLook",
+        "INIT_SUBCOMMAND_ID": "textutil.quicklook.init",
+        "IS_BLOCKING": false,
+        "WINDOW_TITLE": "Quick Look"
+      }
+    },
+    {
+      "NAME": "TextUtil",
+      "COMMAND_ID": "textutil.quicklook.init",
+      "EXECUTION_MODE": "exe_script_file"
+    }
+  ],
+  "VERSION": 2
+}

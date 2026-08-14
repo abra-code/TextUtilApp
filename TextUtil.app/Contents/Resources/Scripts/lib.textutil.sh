@@ -10,7 +10,13 @@ QUICKLOOK_BUTTON_ID=105
 FORMAT_PICKER_ID=13
 
 dialog_tool="$OMC_OMC_SUPPORT_PATH/omc_dialog_control"
+next_cmd="$OMC_OMC_SUPPORT_PATH/omc_next_command"
+pasteboard_tool="$OMC_OMC_SUPPORT_PATH/pasteboard"
 window_uuid="$OMC_ACTIONUI_WINDOW_UUID"
+
+# Private pasteboard key: hand a selection from the Open... panel to a window
+# that does not exist yet, so its init script can pick it up.
+OPEN_PATHS_PB_KEY="TEXTUTIL_OPEN_PATHS"
 
 DEBUG=false
 
@@ -95,11 +101,55 @@ add_files_to_table() {
 
     _lib_log "buffer='${buffer}'"
 
+    # The sorted rows go through a temp file so the path that ends up in row 0
+    # can be read back - callers use it to select and describe the first document
+    # without waiting for a selection event that may not have landed yet.
+    _first_row_path=""
     if [ -n "$buffer" ]; then
-        printf "%s" "$buffer" | /usr/bin/sort -u | "$dialog_tool" "$window_uuid" ${TABLE_ID} omc_table_set_rows_from_stdin
+        local tmp_rows="$(/usr/bin/mktemp "${TMPDIR:-/tmp}/textutil.XXXXXX")"
+        printf "%s" "$buffer" | /usr/bin/sort -u > "$tmp_rows"
+        _first_row_path="$(/usr/bin/head -1 "$tmp_rows" | /usr/bin/cut -f2)"
+        "$dialog_tool" "$window_uuid" ${TABLE_ID} omc_table_set_rows_from_stdin < "$tmp_rows"
+        /bin/rm -f "$tmp_rows"
     else
         _lib_log "buffer empty, clearing table"
         "$dialog_tool" "$window_uuid" ${TABLE_ID} omc_table_remove_all_rows
     fi
     _lib_log "--- add_files_to_table done ---"
+}
+
+# Bring the selection-dependent controls in line with a file path, or with
+# nothing selected when the path is empty.
+# Arguments: file_path (may be empty)
+apply_file_selection() {
+    local selected_path="$1"
+
+    if [ -z "$selected_path" ]; then
+        "$dialog_tool" "$window_uuid" ${REMOVE_BUTTON_ID} omc_disable
+        "$dialog_tool" "$window_uuid" ${REVEAL_BUTTON_ID} omc_disable
+        "$dialog_tool" "$window_uuid" ${QUICKLOOK_BUTTON_ID} omc_disable
+        "$dialog_tool" "$window_uuid" ${FILE_INFO_VIEW_ID} ""
+        return
+    fi
+
+    "$dialog_tool" "$window_uuid" ${REMOVE_BUTTON_ID} omc_enable
+    "$dialog_tool" "$window_uuid" ${REVEAL_BUTTON_ID} omc_enable
+    "$dialog_tool" "$window_uuid" ${QUICKLOOK_BUTTON_ID} omc_enable
+
+    # Get file info using textutil -info, filter out Contents line
+    local file_info="$(/usr/bin/textutil -info "$selected_path" 2>&1 | /usr/bin/grep -v "^  Contents:")"
+
+    if [ -e "$selected_path" ]; then
+        local created="$(/usr/bin/stat -f "%SB" "$selected_path" 2>/dev/null)"
+        local modified="$(/usr/bin/stat -f "%Sm" "$selected_path" 2>/dev/null)"
+
+        if [ -n "$created" ] || [ -n "$modified" ]; then
+            file_info="${file_info}
+
+  Created: ${created}
+  Modified: ${modified}"
+        fi
+    fi
+
+    "$dialog_tool" "$window_uuid" ${FILE_INFO_VIEW_ID} "$file_info"
 }
