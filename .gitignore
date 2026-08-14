@@ -5,3 +5,4 @@ TextUtil.app/Contents/_CodeSignature/
 .DS_Store
 TextUtil.app/Frameworks
 Private/
+Tests/fixtures/

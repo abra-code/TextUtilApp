@@ -20,7 +20,11 @@ OPEN_PATHS_PB_KEY="TEXTUTIL_OPEN_PATHS"
 
 DEBUG=false
 
-_lib_log() { [ "$DEBUG" = "true" ] && printf '%s\n' "$*" >> /tmp/textutil_drop.log; }
+# The trailing "return 0" is load-bearing. With logging off the && short-circuits
+# to false, and every caller that ends with a _lib_log call - textutil.files.drop
+# does - would hand that back as its own exit status. A logging helper must never
+# decide whether the handler succeeded.
+_lib_log() { [ "$DEBUG" = "true" ] && printf '%s\n' "$*" >> /tmp/textutil_drop.log; return 0; }
 
 # Add files to the table.
 # Argument: newline-separated list of file or directory paths to add.
