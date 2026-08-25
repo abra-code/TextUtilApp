@@ -1,6 +1,6 @@
 # TextUtil.app
 
-![TextUtil Icon](Icon/TextUtil-macOS-128x128@2x.png)
+![TextUtil Icon](Icon/TextUtil-macOS-256x256@1x.png)
 
 A native macOS applet for batch conversion of documents between common text formats. Wraps the built-in macOS `textutil` command-line tool in a SwiftUI interface.
 
