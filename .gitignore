@@ -6,3 +6,4 @@ TextUtil.app/Contents/_CodeSignature/
 TextUtil.app/Frameworks
 Private/
 Tests/fixtures/
+TextUtil.app/Contents/Library/Packages
